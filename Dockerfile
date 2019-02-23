@@ -1,5 +1,7 @@
 FROM docker.elastic.co/elasticsearch/elasticsearch:6.6.0
 
+RUN yum update -y && yum clean all
+
 COPY hook-wrapper.sh /usr/local/bin/
 
 ENV trap_signals "INT TERM HUP"
