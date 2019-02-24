@@ -1,18 +1,18 @@
 #!/bin/bash
 
 start() {
-    [ -f "/hooks/prestart" ] && /hooks/prestart || eval $prestart_hook
+    [ -f "/hooks/prestart" ] && /hooks/prestart || (eval "$(printf "$prestart_hook")")
     $entrypoint_original $cmd_original &
     pid="$!"
-    [ -f "/hooks/poststart" ] && /hooks/poststart || eval $poststart_hook
+    [ -f "/hooks/poststart" ] && /hooks/poststart || (eval "$(printf "$poststart_hook")")
     wait
 }
 
 stop() {
     signal="$1"
-    [ -f "/hooks/prestop" ] && /hooks/prestop || eval $prestop_hook
+    [ -f "/hooks/prestop" ] && /hooks/prestop || (eval "$(printf "$prestop_hook")")
     kill -$signal $pid
-    [ -f "/hooks/poststop" ] && /hooks/poststop || eval $poststop_hook
+    [ -f "/hooks/poststop" ] && /hooks/poststop || (eval "$(printf "$poststop_hook")")
 }
 
 # a handler f passed to trapf will get the trap signal as its first argument
