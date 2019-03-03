@@ -1,6 +1,8 @@
 # elasticsearch-hooks-docker
 This image is a small wrapper around the [official Elasticsearch Docker image](https://github.com/elastic/elasticsearch-docker) to allow for arbitrary hooks to be ran before or after Elasticsearch starts or stops.
 
+Since this image is a wrapper, the [documentation for running Elasticsearch in Docker](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) also applies for this image. Running this image without any hooks is identical to just running the base image.
+
 [![Docker Repository on Quay](https://quay.io/repository/qoqo/elasticsearch-hooks/status "Docker Repository on Quay")](https://quay.io/repository/qoqo/elasticsearch-hooks)
 
 ## examples
