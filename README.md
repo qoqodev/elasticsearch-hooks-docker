@@ -3,7 +3,7 @@ This image is a small wrapper around the [official Elasticsearch Docker image](h
 
 Since this image is a wrapper, the [documentation for running Elasticsearch in Docker](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) also applies for this image. Running this image without any hooks is identical to just running the base image.
 
-[![Docker Repository on Quay](https://quay.io/repository/qoqo/elasticsearch-hooks/status "Docker Repository on Quay")](https://quay.io/repository/qoqo/elasticsearch-hooks)
+[![Docker Repository on Quay](https://quay.io/repository/qoqodev/elasticsearch-hooks/status "Docker Repository on Quay")](https://quay.io/repository/qoqodev/elasticsearch-hooks)
 
 ## examples
 
@@ -11,7 +11,7 @@ Since this image is a wrapper, the [documentation for running Elasticsearch in D
 ```
 $ docker run -e prestart_hook='
   bin/elasticsearch-plugin install analysis-icu
-' quay.io/qoqo/elasticsearch-hooks
+' quay.io/qoqodev/elasticsearch-hooks
 ```
 
 ##### Do something after Elasticsearch starts up:
@@ -22,7 +22,7 @@ $ docker run -e poststart_hook='
     sleep 1
   done
   echo "Ready to go!"
-' quay.io/qoqo/elasticsearch-hooks
+' quay.io/qoqodev/elasticsearch-hooks
 ```
 
 ##### Wait for relocations to complete before stopping a node:
@@ -32,7 +32,7 @@ $ docker run -e prestop_hook='
     echo "Still relocating shards off of this node"
     sleep 30
   done
-' quay.io/qoqo/elasticsearch-hooks
+' quay.io/qoqodev/elasticsearch-hooks
 ```
 
 ##### Make sure master re-election has finished before deleting the container:
@@ -45,12 +45,12 @@ $ docker run \
       echo "Waiting a bit for the next cluster state update"
       sleep 5
     done
-' quay.io/qoqo/elasticsearch-hooks
+' quay.io/qoqodev/elasticsearch-hooks
 ```
 
 ##### Don't like environment variables? Mount the hooks onto the `/hooks` directory in the container and they'll be run appropriately:
 ```
 $ ls
 poststart       poststop        prestart        prestop
-$ docker run -v $(pwd):/hooks quay.io/qoqo/elasticsearch-hooks
+$ docker run -v $(pwd):/hooks quay.io/qoqodev/elasticsearch-hooks
 ```
