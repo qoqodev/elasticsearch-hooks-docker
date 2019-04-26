@@ -1,4 +1,4 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:7.0.0-beta1
+FROM docker.elastic.co/elasticsearch/elasticsearch:7.0.0
 
 RUN yum update -y && yum clean all
 
